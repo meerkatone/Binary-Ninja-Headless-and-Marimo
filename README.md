@@ -1,29 +1,29 @@
-# Binary Ninja Headless and Marimo
-Using Binary Ninja Headless with Marimo
+# Binary Ninja headless analysis with marimo
 
+This repository contains a marimo notebook that uses the Binary Ninja Python
+API outside the desktop UI.
+
+## Requirements
+
+- Binary Ninja with a license that permits headless API use
+- Python 3.12
+- [uv](https://docs.astral.sh/uv/)
+
+Install Binary Ninja's Python API with the `install_api.py` script included in
+your Binary Ninja installation before starting the notebook.
+
+## Run the notebook
+
+```bash
 git clone https://github.com/meerkatone/binary_ninja_headless_and_marimo.git
-
-## Install Rust
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-
-## Install uv
-curl -LsSf https://astral.sh/uv/install.sh | sh
-
-## Setup venv and Marimo
-uv venv venv_marimo --python 3.12
-
-source /venv_marimo/headless/bin/activate
-
-cd Binary-Ninja-Headless-and-Marimo
-
+cd binary_ninja_headless_and_marimo
+uv venv --python 3.12
+source .venv/bin/activate
+python "/Applications/Binary Ninja.app/Contents/Resources/scripts/install_api.py"
 uv pip install marimo
+marimo edit binary_ninja_headless.py
+```
 
-## Install the Binary Ninja API
-- python3 ~/binaryninja/scripts/install_api.py
-- python3 /Applications/Binary\ Ninja.app/Contents/Resources/scripts/install_api.py
-- Windows (user install): %LOCALAPPDATA%\Vector35\BinaryNinja
-
-## Launch the notebook
-marimo edit ./binary_ninja_headless.py
-
-The notebook will ask you to install the required dependencies via uv.
+The command above installs the Binary Ninja API into the active virtual
+environment. Adjust the application path if you use a Personal, development,
+non-default, or non-macOS installation.
